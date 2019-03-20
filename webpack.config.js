@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  entry: './insta485/js/main.jsx',
+  entry: './js/main.jsx',
   output: {
-    path: path.join(__dirname, '/insta485/static/js/'),
+    path: path.join(__dirname, '/static/js/'),
     filename: 'bundle.js',
   },
   module: {

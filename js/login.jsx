@@ -1,4 +1,6 @@
 import React from 'react';
+import Time from 'react-time';
+import moment from 'moment';
 
 class Login extends React.Component {
   /* Login Component */
@@ -10,7 +12,7 @@ class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
-    this.state = { password: '', session: lightdm.sessions[0].key, user: lightdm.users[0].name};
+    this.state = { password: '', session: lightdm.sessions[0].key, user: lightdm.users[0].name, now: moment.now() };
   }
 
   componentDidMount() {
@@ -28,6 +30,12 @@ class Login extends React.Component {
         // $('#pass').select();
       }
     };
+
+    self.interval = setInterval(() => {
+      self.setState({
+        now: moment.now(),
+      });
+    }, 1000);
   }
 
   handleSubmit(event) {
@@ -59,12 +67,30 @@ class Login extends React.Component {
     return (
 
       <div>
-        <form id="comment-form" onSubmit={this.handleSubmit}>
-          <input type="text" value={this.state.user} onChange={this.handleUsernameChange} />
-          <input type="text" value={this.state.password} onChange={this.handlePasswordChange} />
-          <input type="submit" />
-        </form>
-      </div>
+        <div className="mc-card">
+          <div className="mc-header">
+            <img src="assets/avatar.png" alt="assets/avatar.png" />
+            <h1 className="mc-title">{this.state.user}</h1>
+            <h1 className="mc-subtitle"><Time value={this.state.now} format="HH:mm:ss" /> </h1>
+          </div>
+          <div className="mc-footer">
+            <form onSubmit={this.handleSubmit}>
+
+              <div className="mc-input">
+                <input type="text" value={this.state.user} onChange={this.handleUsernameChange} />
+                <span>username</span>
+              </div>
+
+              <div className="mc-input">
+                <input type="password" value={this.state.password} onChange={this.handlePasswordChange} autoFocus/>
+                <span>password</span>
+              </div>
+              <input type="submit" className="hidden" />
+            </form>
+
+          </div>
+        </div>
+      </div >
 
     );
   }

@@ -23,9 +23,11 @@
     "isomorphic-fetch": "==2.2.1",
     "jsonlint": "==1.6.2",
     "materialcss": "^0.3.3",
+    "moment": "^2.24.0",
     "prop-types": "==15.6.0",
     "react": "==16.1.0",
     "react-dom": "==16.0.1",
-    "react-infinite-scroll-component": "==2.4.0"
+    "react-infinite-scroll-component": "==2.4.0",
+    "react-time": "^4.3.0"
   }
 }

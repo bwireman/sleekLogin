@@ -98,7 +98,7 @@ class Login extends React.Component {
             </div>
           </div>
         </div>
-        {this.state.showSettings ? <SlidingDialog sessionHandle={this.handleSessionChagne} userHandle={this.handleUsernameChange}/> : null}
+        {/* {this.state.showSettings ? <SlidingDialog sessionHandle={this.handleSessionChagne} userHandle={this.handleUsernameChange}/> : null} */}
 
       </div >
 

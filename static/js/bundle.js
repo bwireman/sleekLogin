@@ -26525,8 +26525,7 @@ var Login = function (_React$Component) {
               )
             )
           )
-        ),
-        this.state.showSettings ? _react2.default.createElement(_slidingDialog2.default, { sessionHandle: this.handleSessionChagne, userHandle: this.handleUsernameChange }) : null
+        )
       );
     }
   }]);

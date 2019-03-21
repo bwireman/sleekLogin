@@ -27099,7 +27099,6 @@ var SlidingDialog = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         _reactAddonsCssTransitionGroup2.default,
         {
@@ -27163,6 +27162,16 @@ var SlidingDialog = function (_React$Component) {
                     );
                   })
                 )
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'mc-button mc-button-text', onClick: lightdm.restart },
+                ' Restart '
+              ),
+              _react2.default.createElement(
+                'a',
+                { className: 'mc-button mc-button-text', onClick: lightdm.shutdown },
+                ' Shutdown '
               )
             )
           )

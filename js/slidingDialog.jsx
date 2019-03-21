@@ -14,7 +14,6 @@ class SlidingDialog extends React.Component {
   }
 
   render() {
-
     return (
       <ReactCSSTransitionGroup
         transitionName="background"
@@ -50,6 +49,8 @@ class SlidingDialog extends React.Component {
                   }
                 </select>
               </form>
+              <a className="mc-button mc-button-text" onClick={lightdm.restart}> Restart </a>
+              <a className="mc-button mc-button-text" onClick={lightdm.shutdown}> Shutdown </a>
             </div>
           </div>
         </div>

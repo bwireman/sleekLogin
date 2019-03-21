@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: './js/main.jsx',
+  target: 'web',
   output: {
     path: path.join(__dirname, '/static/js/'),
     filename: 'bundle.js',

@@ -1,6 +1,7 @@
 import React from 'react';
 import Time from 'react-time';
 import moment from 'moment';
+import SlidingDialog from './slidingDialog';
 
 class Login extends React.Component {
   /* Login Component */
@@ -9,10 +10,12 @@ class Login extends React.Component {
     // Initialize mutable state
     super(props);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handleSessionChagne = this.handleSessionChagne.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.toggleSettings = this.toggleSettings.bind(this);
 
-    this.state = { password: '', session: lightdm.sessions[0].key, user: lightdm.users[0].name, now: moment.now() };
+    this.state = { password: '', session: lightdm.sessions[0].key, user: lightdm.users[0].name, now: moment.now(), showSettings: false };
   }
 
   componentDidMount() {
@@ -40,7 +43,7 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.user);
+
     lightdm.start_authentication(this.state.user);
     this.signIn();
   }
@@ -56,40 +59,47 @@ class Login extends React.Component {
       lightdm.cancel_authentication();
   }
 
+  handleSessionChagne(event) {
+    this.setState({ session: event.target.value });
+    if (lightdm._username)
+      lightdm.cancel_authentication();
+  }
+
   handlePasswordChange(event) {
     this.setState({ password: event.target.value });
     if (lightdm._username)
       lightdm.cancel_authentication();
   }
 
+  toggleSettings(event) {
+    this.setState({ showSettings: !this.state.showSettings });
+  }
+
   render() {
-    // Render number of likes
     return (
 
       <div>
         <div className="mc-card">
-          <div className="mc-header">
-            <img src="assets/avatar.png" alt="assets/avatar.png" />
+          <div className="mc-header click-hover" onClick={this.toggleSettings}>
+            <img src="./assets/avatar.png" alt="./assets/avatar.png" />
             <h1 className="mc-title">{this.state.user}</h1>
             <h1 className="mc-subtitle"><Time value={this.state.now} format="HH:mm:ss" /> </h1>
           </div>
-          <div className="mc-footer">
-            <form onSubmit={this.handleSubmit}>
+          <div className="mc-content" mc-layout="1">
+            <div className="mc-layout" mc-layout-size="normal">
+              <form onSubmit={this.handleSubmit}>
 
-              <div className="mc-input">
-                <input type="text" value={this.state.user} onChange={this.handleUsernameChange} />
-                <span>username</span>
-              </div>
-
-              <div className="mc-input">
-                <input type="password" value={this.state.password} onChange={this.handlePasswordChange} autoFocus/>
-                <span>password</span>
-              </div>
-              <input type="submit" className="hidden" />
-            </form>
-
+                <div className="mc-input">
+                  <input type="password" value={this.state.password} onChange={this.handlePasswordChange} autoFocus />
+                  <span>password</span>
+                </div>
+                <input type="submit" className="hidden" />
+              </form>
+            </div>
           </div>
         </div>
+        {this.state.showSettings ? <SlidingDialog sessionHandle={this.handleSessionChagne} userHandle={this.handleUsernameChange}/> : null}
+
       </div >
 
     );

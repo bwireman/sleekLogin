@@ -1,8 +1,10 @@
 const path = require('path');
+const polyfill = require('babel-polyfill');
+
+const sourcePath = path.join(__dirname, './js');
 
 module.exports = {
-  entry: './js/main.jsx',
-  target: 'web',
+  entry: ['babel-polyfill', path.resolve(sourcePath,  'main.jsx')],
   output: {
     path: path.join(__dirname, '/static/js/'),
     filename: 'bundle.js',

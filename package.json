@@ -32,6 +32,6 @@
     "react-dom": "==16.0.1",
     "react-infinite-scroll-component": "==2.4.0",
     "react-time": "^4.3.0",
-    "react-transition-group": "^2.6.1"
+    "react-transition-group": "^2.7.0"
   }
 }

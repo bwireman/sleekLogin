@@ -1,9 +1,9 @@
 {
-  "name": "insta485",
+  "name": "sleekLogin",
   "version": "0.1.0",
-  "description": "insta485 front end",
-  "main": "insta485/js/main.jsx",
-  "author": "awdeorio",
+  "description": "sleekLogin front end",
+  "main": "sleekLogin/js/main.jsx",
+  "author": "bwireman",
   "license": "MIT",
   "repository": {},
   "devDependencies": {

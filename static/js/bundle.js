@@ -36382,13 +36382,14 @@ var Login = function (_React$Component) {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
       event.preventDefault();
-
+      var lightdm = window.lightdm;
       lightdm.start_authentication(this.state.user);
       this.signIn();
     }
   }, {
     key: 'signIn',
     value: function signIn() {
+      var lightdm = window.lightdm;
       lightdm.cancel_timed_login();
       lightdm.provide_secret(this.state.password);
     }
@@ -36396,18 +36397,21 @@ var Login = function (_React$Component) {
     key: 'handleUsernameChange',
     value: function handleUsernameChange(event) {
       this.setState({ user: event.target.value });
+      var lightdm = window.lightdm;
       if (lightdm._username) lightdm.cancel_authentication();
     }
   }, {
     key: 'handleSessionChagne',
     value: function handleSessionChagne(event) {
       this.setState({ session: event.target.value });
+      var lightdm = window.lightdm;
       if (lightdm._username) lightdm.cancel_authentication();
     }
   }, {
     key: 'handlePasswordChange',
     value: function handlePasswordChange(event) {
       this.setState({ password: event.target.value });
+      var lightdm = window.lightdm;
       if (lightdm._username) lightdm.cancel_authentication();
     }
   }, {
@@ -37007,6 +37011,8 @@ var SlidingDialog = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var lightdm = window.lightdm;
+
       return _react2.default.createElement(
         _reactAddonsCssTransitionGroup2.default,
         {

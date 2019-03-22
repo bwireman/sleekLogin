@@ -43,30 +43,34 @@ class Login extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    const lightdm = window.lightdm;
     lightdm.start_authentication(this.state.user);
     this.signIn();
   }
 
   signIn() {
+    const lightdm = window.lightdm;
     lightdm.cancel_timed_login();
     lightdm.provide_secret(this.state.password);
   }
 
   handleUsernameChange(event) {
     this.setState({ user: event.target.value });
+    const lightdm = window.lightdm;
     if (lightdm._username)
       lightdm.cancel_authentication();
   }
 
   handleSessionChagne(event) {
     this.setState({ session: event.target.value });
+    const lightdm = window.lightdm;
     if (lightdm._username)
       lightdm.cancel_authentication();
   }
 
   handlePasswordChange(event) {
     this.setState({ password: event.target.value });
+    const lightdm = window.lightdm;
     if (lightdm._username)
       lightdm.cancel_authentication();
   }
@@ -77,7 +81,6 @@ class Login extends React.Component {
 
   render() {
     return (
-
       <div>
         <div className="mc-card">
           <div className="mc-header click-hover" onClick={this.toggleSettings}>

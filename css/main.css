@@ -6,6 +6,11 @@ body {
   display: none;
 }
 
+img {
+  max-width: 5%;
+  max-height: 5%;
+}
+
 .background-appear {
   transform: translate(-200%);
 }

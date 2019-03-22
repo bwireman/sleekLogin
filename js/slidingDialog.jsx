@@ -14,6 +14,8 @@ class SlidingDialog extends React.Component {
   }
 
   render() {
+    const lightdm = window.lightdm;
+
     return (
       <ReactCSSTransitionGroup
         transitionName="background"
